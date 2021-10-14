@@ -5,12 +5,7 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: () => import('../components/common/Home'), // 동적 import
-  },
-  {
-    path: '/',
-    name: 'Menu',
-    component: () => import('../components/common/Home'),
+    component:() => import('../components/common/Home') // 동적 import
   },
   {
     path: '/login',
