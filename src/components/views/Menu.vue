@@ -1,4 +1,9 @@
 <template>
+    <nav class="nav">
+        <div class="nav-header">
+            <img src="../../assets/cool.png"> <h2>{{msg}}</h2>
+        </div>
+    </nav>
   <n-menu
     
     :options="menuOptions"
@@ -33,13 +38,20 @@ const menuOptions = [
             path: '../components/common/Home'
           }
         },
-        { default: () => 'Going Home' }
       ),
     key: 'go-back-home',
     icon: renderIcon(HomeIcon)
   },
   {
-    label: '헤헤헤',
+    label: () =>
+    h (
+      RouterLink,
+      {
+        to:{
+          path: '/'
+        }
+      },
+    ),
     key: 'fish',
     icon: renderIcon(FishIcon)
   },

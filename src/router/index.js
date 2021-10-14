@@ -8,6 +8,11 @@ const routes = [
     component: () => import('../components/common/Home'), // 동적 import
   },
   {
+    path: '/',
+    name: 'Menu',
+    component: () => import('../components/common/Home'),
+  },
+  {
     path: '/login',
     name: 'Login',
     component: () => import('../components/views/Login'),
