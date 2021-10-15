@@ -1,6 +1,9 @@
 <template>
   <n-space vertical>
     <n-layout>
+      <n-layout-header>
+        <img alt="header logo" src="./assets/cool.png" style="width:7em; display: block; margin: 0px auto;">
+      </n-layout-header>
       <n-layout has-sider>
         <n-layout-sider
           bordered
@@ -18,6 +21,7 @@
             :collapsed-icon-size="22"
             :options="menuOptions"
           />
+          
         </n-layout-sider>
         <router-view />
         <n-layout style="max-height: 320px;" />
@@ -31,12 +35,10 @@
 
 <script>
 import { h, defineComponent, ref, resolveComponent } from 'vue'
-import { NIcon,NLayoutSider,NLayout,NMenu,NLayoutFooter,NSpace } from 'naive-ui'
+import { NIcon,NLayoutSider,NLayout,NMenu,NLayoutFooter,NSpace,NLayoutHeader } from 'naive-ui'
 import {
-  HomeOutline as HomeIcon,
   BookOutline as BookIcon,
   PersonOutline as PersonIcon,
-  WineOutline as WineIcon
 } from '@vicons/ionicons5'
 
 function renderIcon (icon) {
@@ -52,11 +54,15 @@ const menuOptions = [
         {
           to: {
             path: '/'
+          },
+          style: {
+            "margin-bottom": "5vh",
           }
         },
+        'ME'
       ),
     key: 'go-back-home',
-    icon: renderIcon(HomeIcon)
+    icon: renderIcon(PersonIcon)
   },
   {
      label: () =>
@@ -68,74 +74,47 @@ const menuOptions = [
             path: '/login'
           }
         },
+        '이력'
       ),
     key: 'hear-the-wind-sing',
     icon: renderIcon(BookIcon)
   },
   {
-    label: 'Pinball 1973',
+     label: () =>
+    
+      h(
+        resolveComponent('router-link'),
+        {
+          to: {
+            path: '/test'
+          }
+        },
+         '테스트중입니다'
+      ),
     key: 'pinball-1973',
     icon: renderIcon(BookIcon),
   },
   {
-    label: 'A Wild Sheep Chase',
+     label: () =>
+    
+      h(
+        resolveComponent('router-link'),
+        {
+          to: {
+            path: '/'
+          }
+        },
+        '/'
+      ),
     key: 'a-wild-sheep-chase',
     icon: renderIcon(BookIcon)
   },
-  {
-    label: 'Dance Dance Dance',
-    key: 'Dance Dance Dance',
-    icon: renderIcon(BookIcon),
-    children: [
-      {
-        type: 'group',
-        label: 'People',
-        key: 'people',
-        children: [
-          {
-            label: 'Narrator',
-            key: 'narrator',
-            icon: renderIcon(PersonIcon)
-          },
-          {
-            label: 'Sheep Man',
-            key: 'sheep-man',
-            icon: renderIcon(PersonIcon)
-          }
-        ]
-      },
-      {
-        label: 'Beverage',
-        key: 'beverage',
-        icon: renderIcon(WineIcon),
-        children: [
-          {
-            label: 'Whisky',
-            key: 'whisky'
-          }
-        ]
-      },
-      {
-        label: 'Food',
-        key: 'food',
-        children: [
-          {
-            label: 'Sandwich',
-            key: 'sandwich'
-          }
-        ]
-      },
-      {
-        label: 'The past increases. The future recedes.',
-        key: 'the-past-increases-the-future-recedes'
-      }
-    ]
-  }
 ]
 
 export default defineComponent({
    components: {
-        NMenu,NLayoutSider,NLayout,NLayoutFooter,NSpace
+        NMenu,NLayoutSider,NLayout,NLayoutFooter,NSpace,
+        NLayoutHeader
     },
   setup () {
     return {
@@ -145,3 +124,13 @@ export default defineComponent({
   }
 })
 </script>
+<style scoped>
+* {
+  --item-height: 74px !important; 
+}
+ img{
+     animation-duration: 3s;
+    animation-name: slidein;
+
+ }
+</style>   

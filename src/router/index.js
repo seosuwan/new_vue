@@ -10,8 +10,13 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import('../components/views/Login'),
+    component: () => import('../components/views/Login')
   },
+  {
+    path:'/test',
+    name: 'Test',
+    component: () => import('../components/views/Test')
+  }
 ];
 
 // 이렇게 해도 된다.

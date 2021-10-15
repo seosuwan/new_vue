@@ -1,11 +1,21 @@
 <template>
-    <router-view></router-view>
+
     <div>
-        로그인페이지
+        <h1 >로그인 페이지</h1>
+        <button @Click="count ++">클릭버튼</button>
     </div>
 </template>
 <script>
+
     export default {
-    loname: 'Login',
+        components:{
+            
+        },
+        data(){
+            return{
+                count: 1
+            }
+            
+        }
     };
 </script>
