@@ -2,7 +2,7 @@
   <n-space vertical>
     <n-layout>
       <n-layout-header>
-        <img alt="header logo" src="./assets/cool.png" style="width:7em; display: block; margin: 0px auto;">
+     
       </n-layout-header>
       <n-layout has-sider>
         <n-layout-sider
