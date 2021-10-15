@@ -2,7 +2,6 @@
   <n-space vertical>
     <n-layout>
       <n-layout-header>
-     
       </n-layout-header>
       <n-layout has-sider>
         <n-layout-sider
@@ -26,16 +25,13 @@
         <router-view />
         <n-layout style="max-height: 320px;" />
       </n-layout>
-      <n-layout-footer :inverted="inverted" bordered>
-        Footer Footer Footer
-      </n-layout-footer>
     </n-layout>
   </n-space>
 </template>
 
 <script>
 import { h, defineComponent, ref, resolveComponent } from 'vue'
-import { NIcon,NLayoutSider,NLayout,NMenu,NLayoutFooter,NSpace,NLayoutHeader } from 'naive-ui'
+import { NIcon,NLayoutSider,NLayout,NMenu,NSpace,NLayoutHeader } from 'naive-ui'
 import {
   BookOutline as BookIcon,
   PersonOutline as PersonIcon,
@@ -101,10 +97,10 @@ const menuOptions = [
         resolveComponent('router-link'),
         {
           to: {
-            path: '/'
+            path: '/test2'
           }
         },
-        '/'
+        '테스트 2'
       ),
     key: 'a-wild-sheep-chase',
     icon: renderIcon(BookIcon)
@@ -113,7 +109,7 @@ const menuOptions = [
 
 export default defineComponent({
    components: {
-        NMenu,NLayoutSider,NLayout,NLayoutFooter,NSpace,
+        NMenu,NLayoutSider,NLayout,NSpace,
         NLayoutHeader
     },
   setup () {
