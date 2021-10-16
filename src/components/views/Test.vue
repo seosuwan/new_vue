@@ -1,111 +1,124 @@
 <template>
-            <div class="scroll-downs">
-        <div class="mousey">
-            <div class="scroller"></div>
-        </div>
-    </div>
-       <div class="imgHoverEvent event7">
-        <div class="imgBox"><img src="../../assets/working.gif" alt=""> </div>
-            <div class="hoverBox">
-                <span>
-                <p class="p1">title</p>
-                <p class="p2">내용내용내용내용</p>
-                </span>
-                </div>
-                </div>
-                
+<main>
+  <div class="content">
+    <h1>Scroll Wobble</h1>
+    <svg class="bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 1000" width="500" height="1000" preserveAspectRatio="none">
+      <path class="wobble" d="M0 0 C 250 0, 500 0, 500 0 C 500 250, 500 500, 500 500 C 250 500, 0 500, 0 500 C 0 250, 0 500, 0 0 Z" fill="#6141A3" />
+    </svg>
+  </div>
+</main>    
 </template>
-<style scoped>
+<script>
+export default {
+    data(){
+        var main = document.getElementsByTagName('main')[0],
+    wobbles = document.getElementsByClassName('wobble'),
+    curve = 500;
 
-        
-        .event7 .hoverBox span{display: block; border: 4px solid #ccc; position: absolute; top: 50%; transform: translateY(-50%); height: 30px; width: 80%; left: 10%;transition: 0.5s;}
-        .event7 .hoverBox span p{ opacity: 0; }
-        .event7:hover .hoverBox span{animation: event7Ani 0.8s linear 1; height: 150px;}
-        .event7:hover .hoverBox span p{animation: event7Ani2 0.8s linear 1; opacity: 1;}
+function setWobble(){
+  for (var x = 0; x < wobbles.length; x++){
+    wobbles[x].setAttribute('d', 'M0 0 C 250 0, 500 0, 500 0 C 500 250, 500 500, 500 500 C 250 ' + curve + ', 0 500, 0 500 C 0 250, 0 500, 0 0 Z');
+  }
+  requestAnimationFrame(setWobble);
+};
 
-        @keyframes event7Ani{
-            0%{height: 30px;}
-            80%{height: 150px;}
-            100%{height: 150px;;}
-        }
-        @keyframes event7Ani2{
-            0%{opacity: 0;}
-            80%{opacity: 0;}
-            100%{opacity: 1;}
-        }
-.scroll-downs {
-        position: absolute;
-        top: 300px;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        margin: 0 auto;
-        width: 34px;
-        height: 55px;
-    }
-    
-.mousey {
-        width: 3px;
-        padding: 7px 12px;
-        height: 35px;
-        border-radius: 25px;
-        border: 2px solid #fff;
-        box-sizing: content-box;
-    }
-    
-.scroller {
-        width: 3px;
-        height: 8px;
-        border-radius: 25%;
-        background-color: #fff;
-        animation-name: scroll;
-        animation-duration: 2.2s;
-        animation-timing-function: cubic-bezier(.15, .41, .69, .94);
-        animation-iteration-count: infinite;
-    }
-    
-@keyframes scroll {
-        
-        0% {
-            opacity: 0;
-        }
-        
-        10% {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        
-        100% {
-            transform: translateY(15px);
-            opacity:0;
-        }
+setWobble();
+
+main.addEventListener('scroll', trackScroll);
+
+var scrollSpeed,
+    curveAmount;
+
+function trackScroll(){
+  scrollSpeed = checkScrollSpeed();
+  curveAmount = 500 + scrollSpeed*2;
+  
+  if (curveAmount > 500){
+    curveAmount = Math.min(curveAmount, 750);
+  } else {
+    curveAmount = Math.max(curveAmount, 250);
+  }
+  
+  // TweenMax.to(window, 2.2, {ease: Elastic.easeOut.config(1, 0.3), curve: curveAmount});/
+  
+  if(scrollSpeed != 0){
+    requestAnimationFrame(trackScroll);
+  }
 }
-@keyframes downup {
-            
-            0% {
-                opacity: 0;
-                transform: translateY(0, 100px);
-            }
-            
-            100% {
-                opacity: 1;
-                transform: translate(0, 0);
-            }
-        }
-        
-        @keyframes bounce {
-            
-            from,
-            to {
-                margin-bottom: 0;
-                animation-timing-function: ease-out;
-            }
-            
-            50% {
-                margin-bottom: 8px;
-                animation-timing-function: ease-in;
-            }
-        }
+
+var lastPos,
+    newPos,
+    timer,
+    delta, 
+    delay = 100;
+
+var checkScrollSpeed = (function(){
+  
+    function clear() {
+      lastPos = null;
+      delta = 0;
+    }
+  
+    clear();
     
+    return function(){
+      newPos = main.scrollTop;
       
+      if ( lastPos != null ){
+        delta = newPos -  lastPos;
+      }
+      
+      lastPos = newPos;
+      clearTimeout(timer);
+      timer = setTimeout(clear, delay);
+      
+      return delta;
+    };
+})}}
+</script>
+<style scoped>
+@import "@/style/_variables.scss";
+@import "@/styles/_mixins.scss";
+@import "@/styles/_functions.scss";
+
+body {
+  background-color: #EE534F;
+  font-family: 'Pacifico', cursive;
+  overflow: hidden;
+}
+
+h1{
+  color: #FEFEFE;
+  font-size: 50px;
+  left: 50%;
+  margin: 0;
+  pointer-events: none;
+  position: fixed;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  white-space: nowrap;
+  
+  @media (max-width: 600px){
+    font-size: 10vmin;
+  }
+}
+
+main {
+  bottom: 0;
+  left: 0;
+  overflow-y: scroll;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.content {
+  height: 180%;
+  width: 100%;
+}
+
+.bg{
+  height: 100%;
+  width: 100%;
+}
 </style>

@@ -1,85 +1,87 @@
 <template>
-        <div class="scroll-downs">
-            ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
-        <div class="mousey">
-            ㅁㅇㄹㅁㄴㅇㄹㅇㄹ
-            <div class="scroller"></div>
-            ㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹ
-        </div>
-    </div>
+<section id="scroll1" class="demo">
+  <a href="#scroll2"><span></span>Scroll</a>
+    <a href="#scroll2"><span></span>Scroll</a>
+</section>
 </template>
+
+<script>
+  export default {
+      data(){
+      (function() {
+        ('a[href*=#]').on('click', function(e) {
+            e.preventDefault();
+        ('html, body').animate({ scrollTop: ((this).attr('href')).offset().top}, 500, 'linear');});});}
+      }
+</script>
+
 <style scoped>
-    .scroll-downs {
-        position: absolute;
-        top: 300px;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        margin: 0 auto;
-        width: 34px;
-        height: 55px;
-    }
-    
-.mousey {
-        width: 3px;
-        padding: 7px 12px;
-        height: 35px;
-        border-radius: 25px;
-        border: 2px solid #fff;
-        box-sizing: content-box;
-    }
-    
-.scroller {
-        width: 3px;
-        height: 8px;
-        border-radius: 25%;
-        background-color: #fff;
-        animation-name: scroll;
-        animation-duration: 2.2s;
-        animation-timing-function: cubic-bezier(.15, .41, .69, .94);
-        animation-iteration-count: infinite;
-    }
-    
-@keyframes scroll {
-        
-        0% {
-            opacity: 0;
-        }
-        
-        10% {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        
-        100% {
-            transform: translateY(15px);
-            opacity:0;
-        }
+@import url(https://fonts.googleapis.com/css?family=Josefin+Sans:300,400);
+
+
+section {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
-@keyframes downup {
-            
-            0% {
-                opacity: 0;
-                transform: translateY(0, 100px);
-            }
-            
-            100% {
-                opacity: 1;
-                transform: translate(0, 0);
-            }
-        }
-        
-        @keyframes bounce {
-            
-            from,
-            to {
-                margin-bottom: 0;
-                animation-timing-function: ease-out;
-            }
-            
-            50% {
-                margin-bottom: 8px;
-                animation-timing-function: ease-in;
-            }
-        }
+.demo a {
+  position: absolute;
+  left: 40%;
+  z-index: 2;
+  display: inline-block;
+  -webkit-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  color: #fff;
+  font : normal 400 20px/1 'Josefin Sans', sans-serif;
+  letter-spacing: .1em;
+  text-decoration: none;
+  transition: opacity .3s;
+}
+.demo a:hover {
+  opacity: .5;
+}
+#scroll1 a {
+  padding-top: 70px;
+}
+#scroll1 a span {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  margin-left: -12px;
+  border-left: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-animation: scro 1.5s infinite;
+  animation: scro 1.5s infinite;
+  box-sizing: border-box;
+}
+@-webkit-keyframes scro {
+  0% {
+    -webkit-transform: rotate(-45deg) translate(0, 0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: rotate(-45deg) translate(-20px, 20px);
+    opacity: 0;
+  }
+}
+@keyframes scro {
+  0% {
+    transform: rotate(-45deg) translate(0, 0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(-45deg) translate(-20px, 20px);
+    opacity: 0;
+  }
+}
 </style>

@@ -5,8 +5,8 @@
   <div style="position: relative; z-index: 2;">
     <div>
     <div class="text-shadow-pop-br ">
-      <div style="color: white; font-size: 50px; font-weight: 1000; height: 100px; position: relative; z-index: 2;">
-          PortFolio
+      <div style="color: white; font-size: 60px;">
+         
       </div>
     </div>
      <div id="wrap">
@@ -18,7 +18,6 @@
             </div>
         </div>
         </div> 
-    <p>저는 이걸 잘하고 저걸잘하고 요러코롬 저로코롬 여하튼 뭐든지 다 집어넣어보고....ㅎㅎ</p>
       <ul id="output"></ul>
     </div>
 
@@ -82,8 +81,8 @@
     transform: translateX(0) translateY(0);
   }
   100% {
-    text-shadow: 1px 1px #555555, 2px 2px #555555, 3px 3px #555555, 4px 4px #555555, 5px 5px #555555, 6px 6px #555555, 7px 7px #555555, 8px 8px #555555;
-    transform: translateX(-8px) translateY(-8px);
+    text-shadow: 7px 7px #555555, 2px 2px #555555, 3px 3px #555555, 4px 4px #555555, 5px 5px #555555, 6px 6px #555555, 7px 7px #555555, 8px 8px #555555;
+    transform: translateX(-20px) translateY(-20px);
   }
 }
 
@@ -232,7 +231,7 @@
 .event1 .hoverBox{ transform: translateY(60%); transition: 0.5s;}
 .event1:hover .hoverBox{transform: translateY(0);}
 .main{animation: shake-lr 0.7s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;}
-.text-shadow-pop-br {animation: text-shadow-pop-br 0.6s both; text-align:center;}
+.text-shadow-pop-br {animation: text-shadow-pop-br 0.3s both; text-align:center;}
 .text-flicker-in-glow {animation: text-flicker-in-glow 4s linear both;}
 
 </style>

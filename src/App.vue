@@ -1,132 +1,92 @@
 <template>
-  <n-space vertical>
-    <n-layout>
-      <n-layout-header>
-      </n-layout-header>
-      <n-layout has-sider>
-        <n-layout-sider
-          bordered
-          show-trigger
-          collapse-mode="width"
-          :collapsed-width="64"
-          :width="240"
-          :native-scrollbar="false"
-          :inverted="inverted"
-          style="max-height: 320px;"
-        >
-          <n-menu
-            :inverted="inverted"
-            :collapsed-width="64"
-            :collapsed-icon-size="22"
-            :options="menuOptions"
-          />
-          
-        </n-layout-sider>
-        <router-view />
-        <n-layout style="max-height: 320px;" />
-      </n-layout>
-    </n-layout>
-  </n-space>
+<div>
+<h1>
+  <span>P</span>
+  <span>o</span>
+  <span>R</span>
+  <span>T</span>
+  <span>F</span>
+  <span>o</span>
+  <span>L</span>
+  <span>I</span>
+  <span>o</span>
+</h1>
+<Home></Home>
+</div>
+<Test2></Test2>
+<Test></Test>
+
 </template>
 
+
 <script>
-import { h, defineComponent, ref, resolveComponent } from 'vue'
-import { NIcon,NLayoutSider,NLayout,NMenu,NSpace,NLayoutHeader } from 'naive-ui'
-import {
-  BookOutline as BookIcon,
-  PersonOutline as PersonIcon,
-} from '@vicons/ionicons5'
-
-function renderIcon (icon) {
-  return () => h(NIcon, null, { default: () => h(icon) })
-}
-
-const menuOptions = [
-   {
-    label: () =>
-    
-      h(
-        resolveComponent('router-link'),
-        {
-          to: {
-            path: '/'
-          },
-          style: {
-            "margin-bottom": "5vh",
-          }
-        },
-        'ME'
-      ),
-    key: 'go-back-home',
-    icon: renderIcon(PersonIcon)
-  },
-  {
-     label: () =>
-    
-      h(
-        resolveComponent('router-link'),
-        {
-          to: {
-            path: '/login'
-          }
-        },
-        '이력'
-      ),
-    key: 'hear-the-wind-sing',
-    icon: renderIcon(BookIcon)
-  },
-  {
-     label: () =>
-    
-      h(
-        resolveComponent('router-link'),
-        {
-          to: {
-            path: '/test'
-          }
-        },
-         '테스트중입니다'
-      ),
-    key: 'pinball-1973',
-    icon: renderIcon(BookIcon),
-  },
-  {
-     label: () =>
-    
-      h(
-        resolveComponent('router-link'),
-        {
-          to: {
-            path: '/test2'
-          }
-        },
-        '테스트 2'
-      ),
-    key: 'a-wild-sheep-chase',
-    icon: renderIcon(BookIcon)
-  },
-]
-
-export default defineComponent({
-   components: {
-        NMenu,NLayoutSider,NLayout,NSpace,
-        NLayoutHeader
-    },
-  setup () {
-    return {
-      inverted: ref(false),
-      menuOptions
-    }
+import Test2 from "./components/views/Test2.vue"
+import Test from "./components/views/Test.vue"
+import Home from "./components/common/Home.vue"
+export default {
+  components:{
+    Home,
+    Test2,
+    Test,
   }
-})
-</script>
-<style scoped>
-* {
-  --item-height: 74px !important; 
+  
 }
- img{
-     animation-duration: 3s;
-    animation-name: slidein;
+</script>
+<style>
+   html, body {
+  width: 100%;  
+  height: 100%;
+  background: #FF7777;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  justify-content: center;
+  background-attachment : fixed;
+  }
+h1 {
+  height: 100px;
+}
 
- }
-</style>   
+h1 span {
+  position: relative;
+  top: 20px;
+  display: inline-block;
+  animation: bounce .3s ease infinite alternate;
+  font-family: 'Titan One', cursive;
+  font-size: 80px;
+  color: #FFF;
+  text-shadow: 0 1px 0 #CCC,
+               0 2px 0 #CCC,
+               0 3px 0 #CCC,
+               0 4px 0 #CCC,
+               0 5px 0 #CCC,
+               0 6px 0 transparent,
+               0 7px 0 transparent,
+               0 8px 0 transparent,
+               0 9px 0 transparent,
+               0 10px 10px rgba(0, 0, 0, .4);
+}
+
+h1 span:nth-child(2) { animation-delay: .1s; }
+h1 span:nth-child(3) { animation-delay: .2s; }
+h1 span:nth-child(4) { animation-delay: .3s; }
+h1 span:nth-child(5) { animation-delay: .4s; }
+h1 span:nth-child(6) { animation-delay: .5s; }
+h1 span:nth-child(7) { animation-delay: .6s; }
+h1 span:nth-child(8) { animation-delay: .7s; }
+
+@keyframes bounce {
+  100% {
+    top: -20px;
+    text-shadow: 0 1px 0 #CCC,
+                 0 2px 0 #CCC,
+                 0 3px 0 #CCC,
+                 0 4px 0 #CCC,
+                 0 5px 0 #CCC,
+                 0 6px 0 #CCC,
+                 0 7px 0 #CCC,
+                 0 8px 0 #CCC,
+                 0 9px 0 #CCC,
+                 0 50px 25px rgba(0, 0, 0, .2);
+  }
+}
+</style>
