@@ -8,7 +8,10 @@
   </div>
 </main>    
 </template>
+
 <script>
+
+  import { Elastic } from "gsap";
 export default {
     data(){
         var main = document.getElementsByTagName('main')[0],
@@ -20,7 +23,7 @@ function setWobble(){
     wobbles[x].setAttribute('d', 'M0 0 C 250 0, 500 0, 500 0 C 500 250, 500 500, 500 500 C 250 ' + curve + ', 0 500, 0 500 C 0 250, 0 500, 0 0 Z');
   }
   requestAnimationFrame(setWobble);
-};
+}
 
 setWobble();
 
@@ -39,7 +42,7 @@ function trackScroll(){
     curveAmount = Math.max(curveAmount, 250);
   }
   
-  // TweenMax.to(window, 2.2, {ease: Elastic.easeOut.config(1, 0.3), curve: curveAmount});/
+  (window, 2.2, {ease: Elastic.easeOut.config(1, 0.3), curve: curveAmount});
   
   if(scrollSpeed != 0){
     requestAnimationFrame(trackScroll);
@@ -76,10 +79,11 @@ var checkScrollSpeed = (function(){
     };
 })}}
 </script>
-<style scoped>
-@import "@/style/_variables.scss";
-@import "@/styles/_mixins.scss";
-@import "@/styles/_functions.scss";
+<style lang="scss" scoped>
+
+// @import "@/style/_variables.scss";
+// @import "@/styles/_mixins.scss";
+// @import "@/styles/_functions.scss";
 
 body {
   background-color: #EE534F;

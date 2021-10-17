@@ -14,20 +14,20 @@
 <Home></Home>
 </div>
 <Test2></Test2>
-<Test></Test>
+<Test3></Test3>
 
 </template>
 
 
 <script>
 import Test2 from "./components/views/Test2.vue"
-import Test from "./components/views/Test.vue"
+import Test3 from "./components/views/Test3.vue"
 import Home from "./components/common/Home.vue"
 export default {
   components:{
     Home,
     Test2,
-    Test,
+    Test3,
   }
   
 }
