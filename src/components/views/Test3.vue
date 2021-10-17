@@ -10,8 +10,7 @@
 </template>
 
 <script>
-
-  import { Elastic } from "gsap";
+  import gsap from 'gsap'
 export default {
     data(){
         var main = document.getElementsByTagName('main')[0],
@@ -42,8 +41,8 @@ function trackScroll(){
     curveAmount = Math.max(curveAmount, 250);
   }
   
-  (window, 2.2, {ease: Elastic.easeOut.config(1, 0.3), curve: curveAmount});
-  
+  // gsap.to(window, 2.2, {ease: Elastic.easeOut.config(1, 0.3), curve: curveAmount});
+  gsap.to()
   if(scrollSpeed != 0){
     requestAnimationFrame(trackScroll);
   }
@@ -79,6 +78,7 @@ var checkScrollSpeed = (function(){
     };
 })}}
 </script>
+
 <style lang="scss" scoped>
 
 // @import "@/style/_variables.scss";

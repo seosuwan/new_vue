@@ -1,7 +1,6 @@
 <template>
 <section id="scroll1" class="demo">
-  <a href="#scroll2"><span></span>Scroll</a>
-    <a href="#scroll2"><span></span>Scroll</a>
+  <a href="#scroll2"><span></span>내리슈</a>
 </section>
 </template>
 
@@ -16,13 +15,13 @@
 </script>
 
 <style scoped>
-@import url(https://fonts.googleapis.com/css?family=Josefin+Sans:300,400);
 
+@import url(https://fonts.googleapis.com/css?family=Josefin+Sans:300,400);
 
 section {
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 30%;
 }
 .demo a {
   position: absolute;
